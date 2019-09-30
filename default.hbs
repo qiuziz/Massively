@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{@site.lang}}">
+
 <head>
 
     {{!-- Document Settings --}}
@@ -13,19 +14,45 @@
 
     {{!-- Styles'n'Scripts --}}
     <link rel="stylesheet" type="text/css" href="{{asset "main/css/main.css"}}" />
-    <noscript><link rel="stylesheet" href="{{asset "main/css/noscript.css"}}" /></noscript>
+    <link rel="stylesheet" type="text/css" href="{{asset "main/fonts/iconfont.css"}}" />
+    <noscript>
+        <link rel="stylesheet" href="{{asset "main/css/noscript.css"}}" /></noscript>
 
     {{!-- This tag outputs SEO meta+structured data and other important settings --}}
     {{ghost_head}}
 
     {{#if @site.cover_image}}
-    <style>#wrapper>.bg {background-image: url({{asset "images/overlay.png"}}),linear-gradient(0deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url("{{img_url @site.cover_image}}") }</style>
+    <style>
+        #wrapper>.bg {
+            background-image: url({{asset "images/overlay.png"}}),
+            linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+            url("{{img_url @site.cover_image}}");
+        }
+        .iconfont {
+            text-decoration: none;
+            border-bottom: none;
+            position: relative;
+        }
+        .iconfont:before {
+            width: 2.25rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            display: inline-block;
+            text-align: center;
+            border-radius: 100%;
+            font-size: 1.25rem;
+        }
+        .iconfont>.label {
+            display: none;
+        }
+    </style>
     {{/if}}
 
 </head>
+
 <body class="is-preload {{body_class}}">
 
-    <div id="wrapper" {{#is "home"}}class="fade-in"{{/is}}>
+    <div id="wrapper" {{#is "home"}}class="fade-in" {{/is}}>
 
         {{!-- Intro --}}
         {{#is "home"}}
@@ -41,15 +68,15 @@
         {{!-- Header --}}
         <header id="header">
             {{#if @site.logo}}
-                <a href="{{@site.url}}" class="logo image"><img src="{{@site.logo}}" alt="{{@site.title}}" /></a>
+            <a href="{{@site.url}}" class="logo image"><img src="{{@site.logo}}" alt="{{@site.title}}" /></a>
             {{else}}
-                <a href="{{@site.url}}" class="logo">{{@site.title}}</a>
+            <a href="{{@site.url}}" class="logo">{{@site.title}}</a>
             {{/if}}
         </header>
 
         {{!-- Nav --}}
         {{#if @site.navigation}}
-            {{navigation}}
+        {{navigation}}
         {{/if}}
 
         {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
@@ -81,4 +108,5 @@
     {{ghost_foot}}
 
 </body>
+
 </html>
